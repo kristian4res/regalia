@@ -23,7 +23,7 @@ class App extends Component {
   unsubscribteFromAuth = null;
 
   componentDidMount() {
-    // Google Sign In
+    // Google User Authentication + Creation (stored in Firestore)
     this.unsubscribteFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);

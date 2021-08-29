@@ -35,7 +35,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
                 ...additionalData
             });
         } catch (error) {
-            console.log('error occured while creating new users: ', error.message);
+            console.log('Error occured while creating new users: ', error);
         }
     }
     
@@ -50,6 +50,7 @@ export const firestoreDB = getFirestore();
 // Google Auth utility
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
+// Google Sign In (Account)
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
 };

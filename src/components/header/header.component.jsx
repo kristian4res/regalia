@@ -22,9 +22,7 @@ const Header = ({ currentUser }) => (
                 currentUser 
                 ?
                 <div className='option' onClick={() => {
-                    auth.signOut()
-                        .then(() => console.log('signed out'))
-                        .catch((err) => console.log(err))
+                    auth.signOut();
                 }}>
                     SIGN OUT
                 </div>
