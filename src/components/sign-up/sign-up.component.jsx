@@ -6,6 +6,8 @@ import CustomButton from '../custom-button/custom-button.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
+import './sign-up.styles.scss';
+
 class SignUp extends Component {
     constructor() {
         super();
@@ -62,7 +64,7 @@ class SignUp extends Component {
                         name='displayName'
                         value={displayName}
                         onChange={this.handleChange}
-                        label='displayName'
+                        label='Name'
                         required
                     />
                     <FormInput 
