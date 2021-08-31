@@ -53,6 +53,7 @@ provider.setCustomParameters({ prompt: 'select_account' });
 // Google Sign In (Account)
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
+    .then(userCredentials => console.log(`User ${userCredentials} has signed in with their Google account!`))
 };
 
 export default firebase;

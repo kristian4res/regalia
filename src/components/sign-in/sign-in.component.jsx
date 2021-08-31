@@ -26,7 +26,7 @@ class SignIn extends Component {
 
         try {
             await signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => console.log(`User ${userCredential.user} has signed in!`));
+                    .then((userCredential) => console.log(`User ${userCredential} has signed in!`));
             
             this.setState({ email: '', password: ''});
         } catch (error) {
