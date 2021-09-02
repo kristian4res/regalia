@@ -20,7 +20,7 @@ const CollectionItem = ({ item, addItemProp }) => {
             />
             <div className='collection-footer'>
                 <span className='name'>{name}</span>
-                <span className='price'>{price}</span>
+                <span className='price'>£{price}</span>
             </div>
             <CustomButton onClick={() => addItemProp(item)} invertedColors>ADD TO CART</CustomButton>
         </div>
