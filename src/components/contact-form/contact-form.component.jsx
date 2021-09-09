@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 
 import FormInput from '../form-input/form-input.component';
+import FormTextarea from '../form-textarea/form-textarea.component';
+import CustomButton from '../custom-button/custom-button.component.jsx';
 
 import { FORM_SUBJECTS } from './contact-form.data';
 
@@ -18,6 +20,12 @@ class ContactForm extends Component {
             email: '',
             message: ''
         };
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target;
+
+        this.setState({[name]: value});
     }
 
     render() {
@@ -38,7 +46,7 @@ class ContactForm extends Component {
                             type="text"
                             name="firstName"
                             value={firstName}
-                            onChange={''}
+                            onChange={this.handleChange}
                             label='First Name'
                             required
                         />
@@ -46,7 +54,7 @@ class ContactForm extends Component {
                             type="text"
                             name="lastName"
                             value={lastName}
-                            onChange={''}
+                            onChange={this.handleChange}
                             label='Last Name'
                             required
                         />
@@ -55,18 +63,19 @@ class ContactForm extends Component {
                         type="email"
                         name="email"
                         value={email}
-                        onChange={''}
+                        onChange={this.handleChange}
                         label='Email'
                         required
                     />
-                    <FormInput 
+                    <FormTextarea 
                         type="textarea"
                         name="message"
                         value={message}
-                        onChange={''}
+                        onChange={this.handleChange}
                         label='Message'
                         required
                     />
+                    <CustomButton type='submit'>SEND</CustomButton>
                 </form>
             </div>
         )
