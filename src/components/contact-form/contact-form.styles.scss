@@ -1,0 +1,25 @@
+.contact-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    max-width: 480px;
+
+    .title {
+        margin: 10px 0px;
+    }
+
+    .title-description {
+        font-weight: 550;
+        margin: 10px 0px 30px 0px;
+    }
+
+    .name-container {
+        display: flex;
+        flex-direction: row;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

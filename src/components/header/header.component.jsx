@@ -18,13 +18,13 @@ import './header.styles.scss';
 const Header = ({ currentUserProp, cartHiddenProp  }) => (
     <div className='header'>
         <Link className='logo-container' to='/'>
-            <Logo className='logo' title='CRWN' />
+            <Logo className='logo' title='Regalia' />
         </Link>
         <div className='options'>
             <Link className='option' to='/shop'>
                 SHOP
             </Link>
-            <Link className='option' to='/shop'>
+            <Link className='option' to='/contact'>
                 CONTACT
             </Link>
             {
