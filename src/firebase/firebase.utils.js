@@ -8,9 +8,11 @@ const firebaseConfig = {
     projectId: "crwn-clothing-dtb",
     storageBucket: "crwn-clothing-dtb.appspot.com",
     messagingSenderId: "760930125490",
-    appId: "1:760930125490:web:7d6f911291c874b368ebab",
-    measurementId: "G-RNKK8GQK1S"
-  };
+    appId: "1:760930125490:web:6d2444aa7471c91168ebab",
+    measurementId: "G-YNKXYV1LE5"
+};
+
+const KEY_PREFIX = 'regalia';
 
 // Firestore function
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -19,7 +21,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
 
     const currentUserId = `${userAuth.uid}`;
-    const userRef = doc(firestoreDB, 'users' , currentUserId);
+    const userRef = doc(firestoreDB, `${KEY_PREFIX}-users`, currentUserId);
 
     const snapShot = await getDoc(userRef);
 

@@ -4,14 +4,14 @@ import './form-textarea.styles.scss';
 
 const FormTextarea = ({ handleChange, label, ...otherProps }) => (
     <div className='group'>
-        <textarea className='form-textarea' onChange={handleChange} {...otherProps} placeholder='Message' />
-        {/* {
+        <textarea className='form-textarea' onChange={handleChange} {...otherProps} />
+        {
             label ? 
             (<label className={`form-textarea-label ${otherProps.value.length ? 'shrink' : ''}`}>
                 {label}
             </label>) :
             null
-        } */}
+        }
     </div>
 )
 
