@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import ContactPage from './pages/contact/contact.component';
+import Footer from './components/footer/footer.component';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -52,21 +53,24 @@ class App extends Component {
     const { currentUserProp } = this.props;
 
     return  (
-      <>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/contact' component={ContactPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path='/signin' render={() => currentUserProp ? 
-            (<Redirect to='/' />) 
-            : 
-            (<SignInAndSignUpPage /> )
-            } 
-          />
-        </Switch>
-      </>
+      <div id="page-container">
+        <div id="content-wrap">
+          <Header />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/shop' component={ShopPage} />
+            <Route exact path='/contact' component={ContactPage} />
+            <Route exact path='/checkout' component={CheckoutPage} />
+            <Route exact path='/signin' render={() => currentUserProp ? 
+              (<Redirect to='/' />) 
+              : 
+              (<SignInAndSignUpPage /> )
+              } 
+            />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
     )
   };
 }

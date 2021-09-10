@@ -27,10 +27,18 @@ class ContactForm extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { subject, orderNumber, firstName, lastName, email, message } = this.state;
+        // const { subject, orderNumber, firstName, lastName, email, message } = this.state;
 
         // https://firebase.google.com/docs/firestore/manage-data/add-data
-        console.log('WORK IN PROGRESS')
+        alert('Success');
+        this.setState({
+            subject: '',
+            orderNumber: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: ''
+        });
     }
 
     checkSubject = (subject, orderNumber, handleChange) => {

@@ -23,6 +23,7 @@ $main-color: black;
     border-radius: 0;
     margin: 55px 0;
     min-height: 220px;
+    overflow: auto;
 
     &:focus {
       outline: none;
