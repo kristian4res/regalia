@@ -17,6 +17,6 @@ a {
 }
 
 #content-wrap {
-    padding: 20px 60px;
-    padding-bottom: 2.5rem;
+    padding: 2.5rem;
+    /* padding-bottom: 2.5rem; */
   }

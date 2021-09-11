@@ -9,13 +9,16 @@ import { store, persistor } from './redux/store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ScrollToTop from './components/scroll-to-top/scroll-to-top.component';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
-          <App />
+          <ScrollToTop>
+            <App />
+          </ScrollToTop>
         </PersistGate>
       </BrowserRouter>
     </Provider>
