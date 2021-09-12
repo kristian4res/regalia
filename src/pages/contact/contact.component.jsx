@@ -6,9 +6,11 @@ import './contact.styles.scss';
 
 
 const ContactPage = () => {
+    const title = 'Contact Us'
+
     return (
         <div className="contact-container">
-            <ContactForm />
+            <ContactForm title={title} />
         </div>
     )
 };

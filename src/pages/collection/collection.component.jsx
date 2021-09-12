@@ -7,6 +7,7 @@ import { selectItemCollection } from '../../redux/shop/shop.selectors';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
 import './collection.styles.scss';
+import SubHeader from '../../components/sub-header/sub-header.component';
 
 
 const CollectionPage = ({ collectionProp }) => {
@@ -14,7 +15,7 @@ const CollectionPage = ({ collectionProp }) => {
 
     return (
         <div className="collection-page">
-            <h2 className="title">{title}</h2>
+            <SubHeader title={title.toUpperCase()} />
             <div className="items">
                 {   
                     items.map((item) => (

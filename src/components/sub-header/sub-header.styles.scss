@@ -1,0 +1,21 @@
+.sub-header-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin: 1.6rem 0px 1.3rem 0px;
+
+    .sub-header {
+        margin: 0 7.5px 15px;
+
+        .forward-slash {
+            margin-right: 1.5em;
+        }
+    }
+
+    .separator {
+        padding: 0px 15px 0px 15px;
+        width: 100%;
+        border-bottom: 2px solid black;
+    }
+}

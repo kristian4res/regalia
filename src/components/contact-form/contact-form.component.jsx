@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 import FormInput from '../form-input/form-input.component';
 import FormTextarea from '../form-textarea/form-textarea.component';
-import CustomButton from '../custom-button/custom-button.component.jsx';
+import CustomButton from '../custom-button/custom-button.component';
 
 import { FORM_SUBJECTS, FORM_SUBJECTS_ORDER } from './contact-form.data';
 
@@ -11,7 +11,7 @@ import './contact-form.styles.scss';
 
 
 class ContactForm extends Component {
-    constructor() {
+    constructor(props) {
         super();
 
         this.state = {
@@ -70,11 +70,12 @@ class ContactForm extends Component {
     }
 
     render() {
+        const { title } = this.props;
         const { subject, orderNumber, firstName, lastName, email, message } = this.state;
 
         return (
             <div className="contact-form-container">
-                <h2 className="title">Contact us</h2>
+                <h2 className="title">{title.toUpperCase()}</h2>
                 <span className="title-description">Representatives are available between 8:30 - 17:00 GMT (Monday - Friday) by using the form below.</span>
                 
                 <form className="contact-form" onSubmit={this.handleSubmit}>
