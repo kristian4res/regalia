@@ -23,6 +23,12 @@ $main-color: black;
             margin: 10px;
             width: 200px;
             height: auto;
+
+            .social-icon {
+                &:hover {
+                    filter: brightness(110%);
+                }
+            }
         }
     
         .copyright-container {
