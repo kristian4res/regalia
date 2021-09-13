@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
@@ -51,11 +51,12 @@ class App extends Component {
 
   render() {
     const { currentUserProp } = this.props;
+    const { pathname } = this.props.location;
 
     return  (
       <div id="page-container">
-        <div id="content-wrap">
-          <Header />
+        <Header />
+        <div className={`content-wrap ${pathname === '/checkout' ? 'inverse' : ''}`}>
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path='/shop' component={ShopPage} />
@@ -83,4 +84,4 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUserProp: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

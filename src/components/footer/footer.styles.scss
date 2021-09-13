@@ -1,3 +1,4 @@
+$inverse-color: white;
 $sub-color: #e4e4e4;
 $main-color: black;
 
@@ -15,6 +16,10 @@ $main-color: black;
         width: 100%;
         padding: 26px 16px 20px;
         background-color: $sub-color;
+
+        &.inverse {
+            background-color: $inverse-color;
+        }
 
         .social-icon-container {
             display: flex;
