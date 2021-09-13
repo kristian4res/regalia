@@ -1,0 +1,1 @@
+export const INVERSE_STYLE_PAGES = ['/checkout', '/signin'];

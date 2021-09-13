@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import CustomFormContainer from '../custom-form-container/custom-form-container.component';
+import CustomForm from '../custom-form/custom-form.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -55,46 +57,49 @@ class SignUp extends Component {
         const { displayName, email, password, confirmPassword } = this.state;
 
         return (
-            <div className='sign-up'>
+            <CustomFormContainer>
                 <h2 className='title'>Don't have an account?</h2>
                 <span>Sign up with your email and password</span>
-                
-                <form className='sign-up-form' onSubmit={this.handleSubmit}>
-                    <FormInput 
-                        type='text'
-                        name='displayName'
-                        value={displayName}
-                        onChange={this.handleChange}
-                        label='Name'
-                        required
-                    />
-                    <FormInput 
-                        type='email'
-                        name='email'
-                        value={email}
-                        onChange={this.handleChange}
-                        label='Email'
-                        required
-                    />
-                    <FormInput 
-                        type='password'
-                        name='password'
-                        value={password}
-                        onChange={this.handleChange}
-                        label='Password'
-                        required
-                    />
-                    <FormInput 
-                        type='password'
-                        name='confirmPassword'
-                        value={confirmPassword}
-                        onChange={this.handleChange}
-                        label='Confirm Password'
-                        required
-                    />
-                    <CustomButton type='submit'>SIGN UP</CustomButton>
-                </form>
-            </div>
+                <CustomForm onSubmit={this.handleSubmit}>
+                    <div>
+                        <FormInput 
+                            type='text'
+                            name='displayName'
+                            value={displayName}
+                            onChange={this.handleChange}
+                            label='Name'
+                            required
+                        />
+                        <FormInput 
+                            type='email'
+                            name='email'
+                            value={email}
+                            onChange={this.handleChange}
+                            label='Email'
+                            required
+                        />
+                        <FormInput 
+                            type='password'
+                            name='password'
+                            value={password}
+                            onChange={this.handleChange}
+                            label='Password'
+                            required
+                        />
+                        <FormInput 
+                            type='password'
+                            name='confirmPassword'
+                            value={confirmPassword}
+                            onChange={this.handleChange}
+                            label='Confirm Password'
+                            required
+                        />
+                    </div>
+                    <div>
+                        <CustomButton type='submit'>Sign Up</CustomButton>
+                    </div>
+                </CustomForm>
+            </CustomFormContainer>
         )
     }
 }

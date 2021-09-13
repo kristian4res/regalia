@@ -18,6 +18,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { onSnapshot } from 'firebase/firestore';
 
+import { INVERSE_STYLE_PAGES } from './page-styling/inverse-styling.data';
 import './App.css';
 
 class App extends Component {
@@ -56,7 +57,7 @@ class App extends Component {
     return  (
       <div id="page-container">
         <Header />
-        <div className={`content-wrap ${pathname === '/checkout' ? 'inverse' : ''}`}>
+        <div className={`content-wrap ${INVERSE_STYLE_PAGES.includes(pathname) ? 'inverse' : ''}`}>
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path='/shop' component={ShopPage} />

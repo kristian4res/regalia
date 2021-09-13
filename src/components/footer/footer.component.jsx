@@ -4,15 +4,15 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 
+import { INVERSE_STYLE_PAGES } from '../../page-styling/inverse-styling.data';
 import { ReactComponent as Logo } from '../../assets/regalia.svg';
 import './footer.styles.scss';
 
 
 const Footer = ({ location }) => {
-    console.log(location);
     return (
         <footer className="footer-container">
-            <div className={`footer-content ${location.pathname === '/checkout' ? 'inverse' : ''}`}>
+            <div className={`footer-content ${INVERSE_STYLE_PAGES.includes(location.pathname) ? 'inverse' : ''}`}>
                 <ul className="social-icon-container">
                     <SocialIcon style={{ width: '2.1em', height: '2.1em'}} bgColor="gray" fgColor="white" label="Github" title="Github" url="https://github.com/Enigma-cloud" target="_blank" />
                     <SocialIcon style={{ width: '2.1em', height: '2.1em'}} bgColor="gray" fgColor="white" label="Instagram" title="Instagram" url="https://www.instagram.com/instagram/?hl=en" target="_blank" />

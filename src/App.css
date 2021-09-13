@@ -21,9 +21,11 @@ a {
 #page-container {
     position: relative;
     min-height: 100vh;
+    min-width: 100%;
 }
 
 .content-wrap {
+    min-height: 100vh;
     padding: 2.5rem;
 }
 
