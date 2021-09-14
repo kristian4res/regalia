@@ -56,20 +56,22 @@ class App extends Component {
 
     return  (
       <div id="page-container">
-        <Header />
         <div className={`content-wrap ${INVERSE_STYLE_PAGES.includes(pathname) ? 'inverse' : ''}`}>
-          <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route path='/shop' component={ShopPage} />
-            <Route exact path='/contact' component={ContactPage} />
-            <Route exact path='/checkout' component={CheckoutPage} />
-            <Route exact path='/signin' render={() => currentUserProp ? 
-              (<Redirect to='/' />) 
-              : 
-              (<SignInAndSignUpPage /> )
-              } 
-            />
-          </Switch>
+          <Header />
+          <div className="content">
+            <Switch>
+              <Route exact path='/' component={HomePage} />
+              <Route path='/shop' component={ShopPage} />
+              <Route exact path='/contact' component={ContactPage} />
+              <Route exact path='/checkout' component={CheckoutPage} />
+              <Route exact path='/signin' render={() => currentUserProp ? 
+                (<Redirect to='/' />) 
+                : 
+                (<SignInAndSignUpPage /> )
+                } 
+              />
+            </Switch>
+          </div>
         </div>
         <Footer />
       </div>

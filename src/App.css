@@ -25,8 +25,14 @@ a {
 }
 
 .content-wrap {
+    position: relative;
     min-height: 100vh;
+    min-width: 100%;
+}
+
+.content {
     padding: 2.5rem;
+    overflow: hidden;
 }
 
 .content-wrap.inverse {

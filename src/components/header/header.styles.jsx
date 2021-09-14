@@ -12,6 +12,8 @@ const OptionContainerStyles = css`
 `;
 
 export const HeaderContainer = styled.div`
+    // position: absolute;
+    z-index: 11;
     height: 70px;
     width: 100%;
     display: flex;
@@ -20,11 +22,13 @@ export const HeaderContainer = styled.div`
     margin-bottom: 25px;
     padding: 2.5rem;
     background-color: white;
+    border-bottom: 2px solid black;
 `;
 
 export const LogoContainer = styled(Link)`
     height: 100%;
     width: 70px;
+    margin-bottom: 2em;
 `;
 
 export const OptionsContainer = styled.div`
