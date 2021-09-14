@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 
-import { INVERSE_STYLE_PAGES } from '../../page-styling/inverse-styling.data';
-import { ReactComponent as Logo } from '../../assets/regalia.svg';
+import { INVERSE_STYLE_PAGES } from '../../pages/page-styling/inverse-styling.data';
+import { ReactComponent as Logo } from '../../assets/regalia-mono.svg';
 import './footer.styles.scss';
 
 

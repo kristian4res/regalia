@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
+import CustomFormContainer from '../custom-form-container/custom-form-container.component';
+import CustomForm from '../custom-form/custom-form.component';
 import FormInput from '../form-input/form-input.component';
 import FormTextarea from '../form-textarea/form-textarea.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -11,7 +13,7 @@ import './contact-form.styles.scss';
 
 
 class ContactForm extends Component {
-    constructor(props) {
+    constructor() {
         super();
 
         this.state = {
@@ -74,11 +76,11 @@ class ContactForm extends Component {
         const { subject, orderNumber, firstName, lastName, email, message } = this.state;
 
         return (
-            <div className="contact-form-container">
+            <CustomFormContainer>
                 <h2 className="title">{title.toUpperCase()}</h2>
                 <span className="title-description">Representatives are available between 8:30 - 17:00 GMT (Monday - Friday) by using the form below.</span>
                 
-                <form className="contact-form" onSubmit={this.handleSubmit}>
+                <CustomForm onSubmit={this.handleSubmit}>
                     <Select
                         placeholder="Subject"
                         options={FORM_SUBJECTS} 
@@ -131,8 +133,8 @@ class ContactForm extends Component {
                         required
                     />
                     <CustomButton type='submit'>SEND</CustomButton>
-                </form>
-            </div>
+                </CustomForm>
+            </CustomFormContainer>
         )
     }
 };

@@ -1,0 +1,16 @@
+<svg width="50" height="39" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+
+ <title>regalia</title>
+ <desc>Created with Sketch.</desc>
+ <g>
+  <polygon points="25,8 40,39 10,39 " fill="#3c3547" fill-opacity="0.26" id="Triangle"/>
+  <polygon points="3,14 25,26.5 47,14 40.85517501831055,39 9.084220886230469,39 " fill="#3b0086" id="Rectangle"/>
+  <circle r="2" cy="9" cx="2" fill="#35007a" id="Oval"/>
+  <circle r="2" cy="2" cx="25" fill="#35007a" id="Oval"/>
+  <circle r="2" cy="9" cx="48" fill="#35007a" id="Oval"/>
+  <path fill="#ffffff" stroke="#000000" stroke-opacity="0" d="m22.21747,20.15034l2.78362,-4.34713l2.78362,4.34713l-2.78362,4.34713l-2.78362,-4.34713z" id="svg_5"/>
+  <path fill="#ffffff" stroke="#000000" stroke-opacity="0" d="m8.19239,26.36471l2.78362,-4.34713l2.78362,4.34713l-2.78362,4.34713l-2.78362,-4.34713z" id="svg_7" transform="rotate(-15, 10.9746, 26.3652)"/>
+  <path fill="#ffffff" stroke="#000000" stroke-opacity="0" d="m36.29957,26.36471l2.78362,-4.34713l2.78362,4.34713l-2.78362,4.34713l-2.78362,-4.34713z" id="svg_9" transform="rotate(15, 39.084, 26.3652)"/>
+ </g>
+</svg>

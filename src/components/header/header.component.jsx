@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
-import { ReactComponent as Logo } from '../../assets/regalia.svg';
+import { ReactComponent as Logo } from '../../assets/regalia-color.svg';
 import './header.styles.scss';
 
 

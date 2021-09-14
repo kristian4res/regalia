@@ -1,50 +1,43 @@
-.contact-form-container {
+.title {
+    letter-spacing: 2px;
+    margin: 10px 0px;
+}
+
+.title-description {
+    font-weight: 550;
+    margin: 10px 0px 30px 0px;
+}
+
+.group {
+    margin: 10px 0px 0px 0px;
+}
+
+.name-container {
     display: flex;
-    flex-direction: column;
-    width: 480px;
-    max-width: 480px;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    position: relative;
 
-    .title {
-        letter-spacing: 2px;
-        margin: 10px 0px;
-    }
-
-    .title-description {
-        font-weight: 550;
-        margin: 10px 0px 30px 0px;
+    input {
+        &:focus ~ .form-input-label {
+            top: 10px;
+        }
     }
     
-    .group {
-        margin: 10px 0px 0px 0px;
+    label {
+        position: absolute;
+        top: 30px;
+    }
+}
+
+@media screen  and (max-width: 800px) {
+    div {
+        margin: 0px;
     }
 
     .name-container {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        height: auto;
-        position: relative;
-
-        input {
-            &:focus ~ .form-input-label {
-                top: 10px;
-            }
-        }
-        
-        label {
-            position: absolute;
-            top: 30px;
-        }
-    }
-
-    @media screen  and (max-width: 800px) {
-        div {
-            margin: 0px;
-        }
-
-        .name-container {
-            display: flex;
-            flex-direction: column;
-        }
+        flex-direction: column;
     }
 }

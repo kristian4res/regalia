@@ -18,7 +18,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { onSnapshot } from 'firebase/firestore';
 
-import { INVERSE_STYLE_PAGES } from './page-styling/inverse-styling.data';
+import { INVERSE_STYLE_PAGES } from './pages/page-styling/inverse-styling.data';
 import './App.css';
 
 class App extends Component {
