@@ -22,7 +22,7 @@ const ImageCarousel = ({ carouselImagesProp }) => {
 
     if (numOfImages <= 0) {
         return null;
-    }
+    };
 
     return (
         <section className="carousel-container">
@@ -31,7 +31,9 @@ const ImageCarousel = ({ carouselImagesProp }) => {
             {carouselImagesProp.map((image, idx) => {
                 return (
                     <div key={idx} className={`image-wrapper ${idx === imgIndex ? 'slide active' : 'slide'}`}>
-                        <img className="image" src={image.url} alt={image.descripttion} />
+                        {idx === imgIndex && (
+                            <img className="image" src={image.url} alt={image.description} />
+                        )}
                     </div>
                 )
             })}

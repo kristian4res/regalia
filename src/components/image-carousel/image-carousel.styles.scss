@@ -1,26 +1,30 @@
-$arrow-size: 4rem;
-$arrow-x-pos: 5%;
+$arrow-size: 5em;
+$arrow-x-pos: 0;
 
 .carousel-container {
     position: relative;
     width: 70vw;
-    height: 80vh;
+    height: 75vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 6em;
 
     .image-wrapper {
-        position: relative;
+        max-width: 1000px;
+        border: 1px solid black;
         overflow: hidden;
+        display: flex;
+        align-items: center;
 
         &.slide {
-            display: none;
             opacity: 0;
-            transition-duration: 1s ease;
+            transition-duration: 1s ease-in-out;
 
             &.active {
-                display: flex;
                 opacity: 1;
-                transition: 1s;
+                transition-duration: 2s;
+                transform: scale(1);
             }
         }   
         .image {
@@ -32,15 +36,16 @@ $arrow-x-pos: 5%;
 
     .arrow {
         position: absolute;
-        top: 50%;
+        top: 45%;
         font-size: $arrow-size;
         color: black;
         z-index: 10;
         user-select: none;
         cursor: pointer;
+        opacity: 0.8;
 
         &:hover {
-            opacity: 0.8;
+            opacity: 1;
         }
 
         &.left-arrow {
