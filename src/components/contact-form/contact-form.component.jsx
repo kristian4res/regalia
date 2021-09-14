@@ -81,20 +81,22 @@ class ContactForm extends Component {
                 <span className="title-description">Representatives are available between 8:30 - 17:00 GMT (Monday - Friday) by using the form below.</span>
                 
                 <CustomForm onSubmit={this.handleSubmit}>
-                    <Select
-                        placeholder="Subject"
-                        options={FORM_SUBJECTS} 
-                        onChange={this.handleSubject}
-                        theme={theme => ({
-                            ...theme,
-                            borderRadius: 0,
-                            colors: {
-                              ...theme.colors,
-                              primary25: 'grey',
-                              primary: 'black',
-                            },
-                        })}
-                    />
+                    <div style={{margin: '0px 0px 20px 0px', padding: '0px'}}>
+                        <Select
+                            placeholder="Subject"
+                            options={FORM_SUBJECTS} 
+                            onChange={this.handleSubject}
+                            theme={theme => ({
+                                ...theme,
+                                borderRadius: 0,
+                                colors: {
+                                ...theme.colors,
+                                primary25: 'grey',
+                                primary: 'black',
+                                },
+                            })}
+                        />
+                    </div>
                     {
                         this.checkSubject(subject, orderNumber, this.handleChange)
                     }

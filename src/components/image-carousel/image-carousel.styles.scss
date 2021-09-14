@@ -1,0 +1,54 @@
+$arrow-size: 4rem;
+$arrow-x-pos: 5%;
+
+.carousel-container {
+    position: relative;
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+
+    .image-wrapper {
+        position: relative;
+        overflow: hidden;
+
+        &.slide {
+            display: none;
+            opacity: 0;
+            transition-duration: 1s ease;
+
+            &.active {
+                display: flex;
+                opacity: 1;
+                transition: 1s;
+            }
+        }   
+        .image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        font-size: $arrow-size;
+        color: black;
+        z-index: 10;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &.left-arrow {
+            left: $arrow-x-pos;
+        }
+    
+        &.right-arrow {
+            right: $arrow-x-pos;
+        }
+    }
+}
