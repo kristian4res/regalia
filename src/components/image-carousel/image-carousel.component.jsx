@@ -30,10 +30,15 @@ const ImageCarousel = ({ carouselImagesProp }) => {
             <HiChevronRight className="arrow right-arrow" onClick={nextImage} />
             {carouselImagesProp.map((image, idx) => {
                 return (
-                    <div key={idx} className={`image-wrapper ${idx === imgIndex ? 'slide active' : 'slide'}`}>
-                        {idx === imgIndex && (
-                            <img className="image" src={image.url} alt={image.description} />
-                        )}
+                    <div key={idx} className={`image-wrapper slide ${idx === imgIndex ? 'active' : ''}`}>
+                        {idx === imgIndex && 
+                            (
+                                <>
+                                    <img className="image" src={image.url} alt={image.description} />
+                                    <div className="caption">{image.captions}</div>
+                                </>
+                            )
+                        }
                     </div>
                 )
             })}
