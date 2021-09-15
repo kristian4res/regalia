@@ -11,11 +11,14 @@ const HomePage = () => {
     const title = 'Collections';
 
     return (
-        <HomePageContainer>
-            <ImageCarousel />
-            <SubHeader title={title.toUpperCase()} />
-            <Directory />
-        </HomePageContainer>
+        <>
+            <HomePageContainer>
+                <ImageCarousel />
+                <SubHeader title={title.toUpperCase()} />
+                <Directory />
+            </HomePageContainer>
+        </>
+       
     )
 };
 

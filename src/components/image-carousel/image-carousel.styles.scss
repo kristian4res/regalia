@@ -1,17 +1,18 @@
 $image-rotation: 2.1deg;
 $arrow-size: 6em;
-$arrow-x-pos: 16%;
+$arrow-x-pos: 0%;
 
 .carousel-container {
     position: relative;
     width: 90vw;
-    height: 80vh;
+    height: 83vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 3em;
     background-color: #e4e4e4;
     border: 1px solid gray;
+    border-radius: 5px;
     
     .image-wrapper {
         display: flex;
@@ -21,6 +22,7 @@ $arrow-x-pos: 16%;
         overflow: hidden;
         padding: 20px;
         background-color: whitesmoke;
+        box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.3);
         // Mobile responsive design
         // height: 500px;
         // width: 600px;
