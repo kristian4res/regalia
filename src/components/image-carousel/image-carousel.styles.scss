@@ -1,89 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+$max-img-width: 930px;
+$max-img-height: 600px;
+
 $image-rotation: 2.1deg;
-$arrow-size: 6em;
-$arrow-x-pos: 0%;
+$arrow-size: 5em;
+$arrow-x-pos: 5%;
 
 .carousel-container {
     position: relative;
-    width: 90vw;
-    height: 83vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw;
+    height: 75vh;
     margin-bottom: 3em;
-    background-color: #e4e4e4;
+    background-color: #9e88b2;
     border: 1px solid gray;
     border-radius: 5px;
     overflow: hidden;
     
     .image-wrapper {
-        position: absolute;
-        left: 23%;
+        font-family: 'Rock Salt', cursive;
+        
         display: flex;
         align-items: center;
         flex-direction: column;
         border: 1px solid black;
-        overflow: hidden;
-        padding: 20px;
         background-color: whitesmoke;
         box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.3);
-        // Mobile responsive design
-        // height: 500px;
-        // width: 600px;
-        // margin: 30px;
+        overflow: hidden;
 
-        // &:nth-child(even) {
-        //     transform: rotate(-$image-rotation);
-        // }
+        max-width: $max-img-width;
+        padding: 20px;
+        transition: 1s ease;
 
-        // &:nth-child(odd) {
-        //     transform: rotate($image-rotation);
-        // }
-        &.slide {
-            opacity: 0;
-            transition-duration: 1s ease;
 
-            &.active {
-                opacity: 1;
-                animation: slide-from-left 2.4s;
+        &:nth-child(even) {
+            transform: rotate(-$image-rotation);
+        }
 
-                @keyframes slide-from-left {
-                    0% {
-                        // transform: scale(0.9);
-                        transform: translateX(-200%);
-                    }
-                    100% {
-                        // transform: scale(1.05);
-                        transform: translateX(0%);
-                    }
-                }
-            }
-            
-            &.inactive {
-                opacity: 0;
-                animation: slide-to-right 2.4s;
-
-                @keyframes slide-from-right {
-                    0% {
-                        transform: translateX(0%);
-                    }
-                    100% {
-                        transform: translateX(200%);
-                    }
-                }
-            }
-            
+        &:nth-child(odd) {
+            transform: rotate($image-rotation);
+        }
+        &:hover {
+            transform: scale(1.05);
         }
 
         .image {
             object-fit: cover;
             width: 100%;
             height: 100%;
-            max-height: 600px;
-            max-width: 930px;
+            max-height: $max-img-height;
+            max-width: $max-img-width;
         }
 
         .caption {
             margin-top: 1em;
+            word-wrap: break-word;
         }
     }
 
@@ -96,9 +67,13 @@ $arrow-x-pos: 0%;
         user-select: none;
         cursor: pointer;
         opacity: 0.8;
+        border-radius: 50%;
 
         &:hover {
+            transition: ease 1s;
             opacity: 1;
+            color: white;
+            background-color: rgba(0,0,0,0.6);
         }
 
         &.left-arrow {
@@ -107,6 +82,13 @@ $arrow-x-pos: 0%;
     
         &.right-arrow {
             right: $arrow-x-pos;
+        }
+
+        &.show {
+            display: inline-block;
+        }
+        &.hide {
+            display: none;
         }
     }
 }

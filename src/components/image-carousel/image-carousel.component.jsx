@@ -6,18 +6,65 @@ import { selectCarouselImages } from '../../redux/image-carousel/image-carousel.
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import './image-carousel.styles.scss';
+import { TextOverlay, SliderWrapper } from './image-carousel.styles';
 
 
 const ImageCarousel = ({ carouselImagesProp }) => {
-    const [imgIndex, setImgIndex] = useState(0);
     const numOfImages = carouselImagesProp.length;
 
-    const prevImage = () => {
-        setImgIndex(imgIndex === 0 ? numOfImages - 1 : imgIndex - 1);
+    const getWidth = () => window.innerWidth;
+    const [slideObject, setSlideObject] = useState({
+        activeIndex: 0,
+        translate: 0,
+        transition: 0.45
+      })
+
+    const { activeIndex, translate, transition } = slideObject;
+
+    const displayArrows = (index) => {
+        console.log('HELLOOOOOOO')
+        if (index === 0) {
+            return (
+                <HiChevronRight className="arrow right-arrow" onClick={nextSlide} />
+            )
+        }
+        if (index === numOfImages - 1) {
+            return (
+                <HiChevronLeft className="arrow left-arrow" onClick={prevSlide} />
+            )
+        }
+        else {
+            return (
+                <>
+                    <HiChevronLeft className="arrow left-arrow" onClick={prevSlide} />
+                    <HiChevronRight className="arrow right-arrow" onClick={nextSlide} />
+                </>
+            )
+        }
+    };
+    
+    const nextSlide = () => {
+        setSlideObject(prevState => {
+            const evalIndex = (activeIndex) === (numOfImages - 1);
+
+            return ({
+                ...prevState,
+                activeIndex: evalIndex ? 0 : (activeIndex + 1),
+                translate: evalIndex ? 0 : ((activeIndex + 1) * getWidth())
+            })
+        })
     };
 
-    const nextImage = () => {
-        setImgIndex(imgIndex === numOfImages - 1 ? 0 : imgIndex + 1);
+    const prevSlide = () => {
+        setSlideObject(prevState => {
+            const evalIndex = (activeIndex === 0 );
+
+            return ({
+                ...prevState,
+                activeIndex: evalIndex ? numOfImages - 1 : activeIndex - 1,
+                translate: evalIndex ? (numOfImages - 1) * getWidth() : (activeIndex - 1) * getWidth()
+            })
+        })
     };
 
     if (numOfImages <= 0) {
@@ -26,22 +73,24 @@ const ImageCarousel = ({ carouselImagesProp }) => {
 
     return (
         <section className="carousel-container">
-            <HiChevronLeft className="arrow left-arrow" onClick={prevImage} />
-            <HiChevronRight className="arrow right-arrow" onClick={nextImage} />
-            {carouselImagesProp.map((image, idx) => {
-                return (
-                    <div key={idx} className={`image-wrapper slide ${idx === imgIndex ? 'active' : 'inactive'}`}>
-                        {idx === imgIndex && 
-                            (
-                                <>
-                                    <img className="image" src={image.url} alt={image.description} />
-                                    <div className="caption">{image.captions}</div>
-                                </>
-                            )
-                        }
-                    </div>
-                )
-            })}
+            {displayArrows(activeIndex)}
+            <TextOverlay>
+                Streetwear is the new casual
+            </TextOverlay>
+            <SliderWrapper 
+                translate={translate} 
+                transition={transition}
+                width={getWidth() * numOfImages}
+            >
+                {carouselImagesProp.map((image, idx) => {
+                    return (
+                        <div key={idx} className={`image-wrapper`}>
+                            <img className="image" src={image.url} alt={image.description} />
+                            <div className="caption">{image.captions}</div> 
+                        </div>
+                    )
+                })}
+            </SliderWrapper>
         </section>
     )
 }
