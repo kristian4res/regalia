@@ -20,9 +20,9 @@ export const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-    padding: 2.5rem;
+    padding: 2.5rem 10rem 2.5rem;
     background-color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid gray;
 `;
 
 export const LogoContainer = styled(Link)`

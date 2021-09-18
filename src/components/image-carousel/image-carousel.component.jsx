@@ -6,7 +6,7 @@ import { selectCarouselImages } from '../../redux/image-carousel/image-carousel.
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import './image-carousel.styles.scss';
-import { TextOverlay, SliderWrapper } from './image-carousel.styles';
+import { TextOverlay, SliderWrapper, Dots } from './image-carousel.styles';
 
 
 const ImageCarousel = ({ carouselImagesProp }) => {
@@ -22,7 +22,6 @@ const ImageCarousel = ({ carouselImagesProp }) => {
     const { activeIndex, translate, transition } = slideObject;
 
     const displayArrows = (index) => {
-        console.log('HELLOOOOOOO')
         if (index === 0) {
             return (
                 <HiChevronRight className="arrow right-arrow" onClick={nextSlide} />
@@ -75,7 +74,7 @@ const ImageCarousel = ({ carouselImagesProp }) => {
         <section className="carousel-container">
             {displayArrows(activeIndex)}
             <TextOverlay>
-                Streetwear is the new casual
+                {carouselImagesProp[activeIndex].heroText}
             </TextOverlay>
             <SliderWrapper 
                 translate={translate} 
@@ -91,6 +90,7 @@ const ImageCarousel = ({ carouselImagesProp }) => {
                     )
                 })}
             </SliderWrapper>
+            <Dots slides={carouselImagesProp} activeIndex={activeIndex} />
         </section>
     )
 }

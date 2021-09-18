@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const TextOverlay = styled.div`
     position: absolute;
     top: 25%;
-    left: 20%;
-    width: 20%;
+    left: 15%;
+    width: 500px;
     font-size: 90px;
     z-index: 9;
     color: white;
+    background-color: rgba(252,247,255,0.7);
+    padding: 0.5em;
 `;
 
 export const SliderWrapper = styled.div`
@@ -19,3 +21,34 @@ export const SliderWrapper = styled.div`
     justify-content: space-evenly;
     padding: 70px;
 `;
+
+const Dot = styled.li`
+  padding: 10px;
+  margin-right: 5px;
+  // cursor: pointer;
+  border-radius: 50%;
+  background: ${props => props.active ? 'black' : 'white'};
+`;
+
+
+export const Dots = ({ slides, activeIndex }) => (
+    <ul
+      style={{
+        position: 'absolute',
+        left: '0%',
+        bottom: '2%',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: '10',
+        listStyle: 'none',
+        padding: '0px',
+        margin: '0px'
+      }}
+    >
+      {slides.map((slide, i) => (
+        <Dot key={slide.id} active={activeIndex === i} />
+      ))}
+    </ul>
+)
