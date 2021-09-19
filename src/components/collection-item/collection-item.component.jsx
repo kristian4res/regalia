@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -8,12 +9,12 @@ import { addItem } from '../../redux/cart/cart.actions';
 import './collection-item.styles.scss';
 
 
-const CollectionItem = ({ item, addItemProp }) => {
-    const { name, price, imageUrl } = item;
+const CollectionItem = ({ item, addItemProp, history, match }) => {
+    const { id, name, price, imageUrl } = item;
 
     return (
         <div className='collection-item'>
-            <div className='image'
+            <div className='image' onClick={() => history.push(`${match.url}/${id}`)}
             style={{
                 backgroundImage: `url(${imageUrl})`
             }}  
@@ -30,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
     addItemProp: item => dispatch(addItem(item))
 })
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default withRouter(connect(null, mapDispatchToProps)(CollectionItem));

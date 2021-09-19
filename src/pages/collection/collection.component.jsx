@@ -2,12 +2,12 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { selectItemCollection } from '../../redux/shop/shop.selectors';
+import { selectItemCollection, selectProduct } from '../../redux/shop/shop.selectors';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
+import SubHeader from '../../components/sub-header/sub-header.component';
 
 import './collection.styles.scss';
-import SubHeader from '../../components/sub-header/sub-header.component';
 
 
 const CollectionPage = ({ collectionProp }) => {
@@ -28,7 +28,8 @@ const CollectionPage = ({ collectionProp }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    collectionProp: selectItemCollection(ownProps.match.params.collectionId)(state)
+    collectionProp: selectItemCollection(ownProps.match.params.collectionId)(state),
+    productProp: selectProduct(ownProps.match.params.productId)(state)
 })
 
 export default connect(mapStateToProps)(CollectionPage);

@@ -18,3 +18,10 @@ export const selectItemCollection = memoize((collectionUrlParam) =>
         [selectShopCollections],
         collections => collections[collectionUrlParam]
 ));
+
+export const selectProduct = memoize((itemUrlParam) => (
+    createSelector(
+        [selectItemCollection],
+        collection => collection[itemUrlParam]
+    )
+))
