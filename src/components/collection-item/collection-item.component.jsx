@@ -9,12 +9,17 @@ import { addItem } from '../../redux/cart/cart.actions';
 import './collection-item.styles.scss';
 
 
-const CollectionItem = ({ item, addItemProp, history, match }) => {
+const CollectionItem = ({ collection, item, addItemProp, history, match }) => {
     const { id, name, price, imageUrl } = item;
+    const linkUrl = match.url === '/shop' ? `${match.url}/${collection.toLowerCase()}/${id}` : `${match.url}/${id}`;
+
+    function handleClick() {
+        history.push(`${linkUrl}`)
+    }
 
     return (
         <div className='collection-item'>
-            <div className='image' onClick={() => history.push(`${match.url}/${id}`)}
+            <div className='image' onClick={handleClick}
             style={{
                 backgroundImage: `url(${imageUrl})`
             }}  

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { selectItemCollection, selectProduct } from '../../redux/shop/shop.selectors';
+import { selectItemCollection } from '../../redux/shop/shop.selectors';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import SubHeader from '../../components/sub-header/sub-header.component';
@@ -19,7 +19,7 @@ const CollectionPage = ({ collectionProp }) => {
             <div className="items">
                 {   
                     items.map((item) => (
-                        <CollectionItem key={item.id} item={item} />
+                        <CollectionItem key={item.id} collection={title} item={item} />
                     ))
                 }
             </div>
@@ -28,8 +28,7 @@ const CollectionPage = ({ collectionProp }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    collectionProp: selectItemCollection(ownProps.match.params.collectionId)(state),
-    productProp: selectProduct(ownProps.match.params.productId)(state)
-})
+    collectionProp: selectItemCollection(ownProps.match.params.collectionId)(state)
+});
 
 export default connect(mapStateToProps)(CollectionPage);

@@ -12,7 +12,7 @@ const StripeCheckoutButton = ({ price }) => {
     return (
         <StripeCheckout
             label="Pay Now"
-            name="CRWN Clothing Ltd."
+            name="Regalia Ltd."
             image="https://svgshare.com/i/Cuz.svg"
             currency="GBP"
             locale="en"
