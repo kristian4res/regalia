@@ -22,13 +22,13 @@ import { INVERSE_STYLE_PAGES } from './pages/page-styling/inverse-styling.data';
 import './App.css';
 
 class App extends Component {
-  unsubscribteFromAuth = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { setCurrentUserProp } = this.props;
 
     // Google User Authentication + Creation (stored in Firestore)
-    this.unsubscribteFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribteFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render() {

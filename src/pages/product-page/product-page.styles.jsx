@@ -10,10 +10,16 @@ export const ProductPageContainer = styled.div`
 
 export const ImageContainer = styled.div`
     display: flex;
-    min-height: 100%;
+    flex-direction: horizontal;
+    gap: 10px;
     min-width: 100%;
-    background-image: url(${props => props.imageUrl});
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: scale(2.5); 
+    // background-image: url(${props => props.imageUrl});
+    // background-repeat: no-repeat;
+    // background-position: center;
+`;
+
+export const Image = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 `;

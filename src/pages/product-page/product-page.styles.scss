@@ -1,7 +1,65 @@
-.product-information {
-    
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
+
+.product-preview {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    .preview-description {
+        padding: 1em;
+
+        .description {
+            font-family: 'Noto Serif', serif;
+            font-weight: 100;
+            font-size: larger;
+        }
+        
+        .description-list {
+            margin-top: 3em;
+
+            .description-list-container {
+                clear: both;
+                display: block;
+                margin-bottom: 8px;
+                min-height: 20px;
+
+                dt, dd { 
+                    float: left;
+                }
+
+                dt { 
+                    clear: both;
+                }
+
+                dd {
+                    font-size: 0.9em;
+                    margin-left: 0.5em;
+                    color: gray
+                }
+            }   
+        }
+    }
 }
 
-.product-options {
+.product-information {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
+    .product-title {
+        margin: 0 0 1.4em;
+        
+        h1 {
+            margin-top: 25px;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
 }
