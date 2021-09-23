@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 
 import CustomFormContainer from '../custom-form-container/custom-form-container.component';
 import CustomForm from '../custom-form/custom-form.component';
@@ -10,6 +9,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import { FORM_SUBJECTS, FORM_SUBJECTS_ORDER } from './contact-form.data';
 
 import './contact-form.styles.scss';
+import CustomSelect from '../custom-select/custom-select.component';
 
 
 class ContactForm extends Component {
@@ -82,19 +82,10 @@ class ContactForm extends Component {
                 
                 <CustomForm onSubmit={this.handleSubmit}>
                     <div style={{margin: '0px 0px 20px 0px', padding: '0px'}}>
-                        <Select
+                        <CustomSelect
                             placeholder="Subject"
                             options={FORM_SUBJECTS} 
                             onChange={this.handleSubject}
-                            theme={theme => ({
-                                ...theme,
-                                borderRadius: 0,
-                                colors: {
-                                ...theme.colors,
-                                primary25: 'grey',
-                                primary: 'black',
-                                },
-                            })}
                         />
                     </div>
                     {

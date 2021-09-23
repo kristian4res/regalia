@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
+import { addItem } from '../../redux/cart/cart.actions';
+
 import { selectProduct } from '../../redux/shop/shop.selectors';
 
-import Select from 'react-select';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomSelect from '../../components/custom-select/custom-select.component';
+import { ProductPageContainer, ImageContainer, Image, ProductInformation, ProductTitle, ProductForm, FormSelect, SwatchFieldset } from './product-page.styles';
 
-import { ProductPageContainer, ImageContainer, Image } from './product-page.styles';
 import './product-page.styles.scss';
 
-const ProductPage = ({ productProp }) => {
-    const { name, imageUrl } = productProp;
+
+const ProductPage = ({ productProp, addItemProp }) => {
+    const { name, imageUrl, price } = productProp;
     const [productColor, setProductColor] = useState('');
+    const [productQuantity, setProductQuantity] = useState();
     
     const sizes = [
         { value: 's', label: 'Small'},
@@ -19,12 +25,30 @@ const ProductPage = ({ productProp }) => {
         { value: 'l', label: 'Large' }
     ];
 
-    function handleColor(e) {
-        setProductColor(e.target.value);
-    }
+    const quantity = [
+        { value: 1, label: '1'},
+        { value: 2, label: '2' },
+        { value: 3, label: '3' },
+        { value: 4, label: '4' },
+        { value: 5, label: '5' },
+        { value: 6, label: '6' }
+    ];
 
     function handleSize(e) {
         console.log(e);
+    };
+
+    function handleQuantity(e) {
+        setProductQuantity(e.value);
+    };
+
+    function handleColor(e) {
+        setProductColor(e.target.value);
+    };
+
+    function handleForm(e) {
+        e.preventDefault();
+        addItemProp({...productProp, quantity: productQuantity})
     }
 
     return (
@@ -64,14 +88,13 @@ const ProductPage = ({ productProp }) => {
                     </dl>
                 </div>
             </div>
-            <div className="product-information">
-                <div className="product-title">
+            <ProductInformation>
+                <ProductTitle>
                     <h1>{name}</h1>
-                    <h3>£9.99</h3>
-                </div>
-                <div className="product-form">
-                    <form onSubmit={(e) => {e.preventDefault()}}>
-                        <fieldset className="swatch-fieldset">
+                    <h2>£{price}.00</h2>
+                </ProductTitle>
+                    <ProductForm onSubmit={handleForm}>
+                        <SwatchFieldset>
                             <legend>Color: {productColor}</legend>
                             <label htmlFor="jet-black">
                                 <input type="radio" name="jet-black" title="Jet Black"
@@ -97,22 +120,44 @@ const ProductPage = ({ productProp }) => {
                                 />
                                 <span style={{backgroundColor: "#7851a9"}} />
                             </label>
-                        </fieldset>
-                        <Select
+                        </SwatchFieldset>
+                        <FormSelect>
+                            <CustomSelect
                                 placeholder="Select size"
                                 options={sizes} 
                                 onChange={handleSize}
                             />
+                            <CustomSelect
+                                placeholder="Select quantity"
+                                options={quantity}
+                                onChange={handleQuantity}
+                            />
+                        </FormSelect>
                         <CustomButton type="submit">Add to Cart</CustomButton>
-                    </form>
-                </div>
-            </div>
+                    </ProductForm>
+            </ProductInformation>
         </ProductPageContainer>
     )
 };
 
+// Create dummy data
+ProductPage.defaultProps = {
+    productProp: {
+        id: 1,
+        name: 'PRODUCT TITLE',
+    }
+}
+
+ProductPage.propTypes = {
+    productProp: PropTypes.object
+}
+
 const mapStateToProps = (state, ownProps) => ({
     productProp: selectProduct(ownProps.match.params.collectionId, ownProps.match.params.productId)(state)
-})
+});
 
-export default connect(mapStateToProps)(ProductPage);
+const mapDispatchToProps = dispatch => ({
+    addItemProp: item => dispatch(addItem(item))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
