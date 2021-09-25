@@ -8,7 +8,7 @@ export const TextOverlay = styled.div`
     font-size: 90px;
     z-index: 9;
     color: white;
-    background-color: rgba(252,247,255,0.7);
+    background-color: rgba(28, 16, 32, 0.7);
     padding: 0.5em;
 `;
 
