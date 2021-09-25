@@ -10,7 +10,9 @@ export const selectShopCollections = createSelector(
 
 export const selectItemCollectionForPreview = createSelector(
     [selectShopCollections],
-    collections => Object.keys(collections).map(key => collections[key])
+    collections => (
+        (collections ? Object.keys(collections).map(key => collections[key]) : [])
+    )
 );
 
 export const selectItemCollection = memoize((collectionUrlParam) => 
@@ -19,9 +21,19 @@ export const selectItemCollection = memoize((collectionUrlParam) =>
         collections => collections[collectionUrlParam]
 ));
 
-export const selectProduct = (collectionUrlParam, itemUrlParam) => (
+export const selectProduct = memoize((collectionUrlParam, itemUrlParam) => (
     createSelector(
         [selectShopCollections],
         collections => collections[collectionUrlParam].items.find(item => item.id === parseInt(itemUrlParam))
     )
+));
+
+export const selectIsCollectionFetching = createSelector(
+    [selectShop],
+    shop => shop.isFetching
+);
+
+export const selectIsCollectionsLoaded = createSelector(
+    [selectShop],
+    shop => !!shop.collections
 );

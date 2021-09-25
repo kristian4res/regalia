@@ -11,7 +11,6 @@ import Footer from './components/footer/footer.component';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
-
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -80,7 +79,7 @@ class App extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUserProp: selectCurrentUser
+  currentUserProp: selectCurrentUser,
 });
 
 const mapDispatchToProps = dispatch => ({

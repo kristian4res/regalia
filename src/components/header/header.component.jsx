@@ -6,7 +6,7 @@ import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CustomLink from '../custom-link/custom-link.component';
-import { HeaderContainer, LogoContainer, OptionsContainer } from './header.styles';
+import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './header.styles';
 
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -31,11 +31,11 @@ const Header = ({ currentUserProp, cartHiddenProp  }) => (
             {
                 currentUserProp 
                 ?
-                <CustomLink as='div' onClick={() => {
+                <OptionLink as='div' onClick={() => {
                     auth.signOut();
                 }}>
                     SIGN OUT
-                </CustomLink>
+                </OptionLink>
                 :
                 <CustomLink to='/signin'>
                     SIGN IN

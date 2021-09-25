@@ -14,7 +14,7 @@ const CollectionItem = ({ collection, item, addItemProp, history, match }) => {
     const linkUrl = match.url === '/shop' ? `${match.url}/${collection.toLowerCase()}/${id}` : `${match.url}/${id}`;
 
     function handleClick() {
-        history.push(`${linkUrl}`)
+        history.push(`${linkUrl}`);
     }
 
     return (
