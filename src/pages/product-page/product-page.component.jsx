@@ -7,6 +7,7 @@ import { addItem } from '../../redux/cart/cart.actions';
 
 import { selectProduct } from '../../redux/shop/shop.selectors';
 
+import StickyComponent from '../../components/sticky-comp/sticky-comp.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import CustomSelect from '../../components/custom-select/custom-select.component';
 import { ProductPageContainer, ImageContainer, Image, ProductInformation, ProductTitle, ProductForm, FormSelect, SwatchFieldset } from './product-page.styles';
@@ -89,10 +90,11 @@ const ProductPage = ({ productProp, addItemProp }) => {
                 </div>
             </div>
             <ProductInformation>
-                <ProductTitle>
-                    <h1>{name}</h1>
-                    <h2>£{price}.00</h2>
-                </ProductTitle>
+                <StickyComponent>
+                    <ProductTitle>
+                        <h1>{name}</h1>
+                        <h2>£{price}.00</h2>
+                    </ProductTitle>
                     <ProductForm onSubmit={handleForm}>
                         <SwatchFieldset>
                             <legend>Color: {productColor}</legend>
@@ -135,6 +137,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
                         </FormSelect>
                         <CustomButton type="submit">Add to Cart</CustomButton>
                     </ProductForm>
+                </StickyComponent>
             </ProductInformation>
         </ProductPageContainer>
     )
