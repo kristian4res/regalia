@@ -21,7 +21,7 @@ export const selectItemCollection = memoize((collectionUrlParam) =>
         collections => collections[collectionUrlParam]
 ));
 
-export const selectProduct = memoize((collectionUrlParam, itemUrlParam) => (
+export const selectProduct = ((collectionUrlParam, itemUrlParam) => (
     createSelector(
         [selectShopCollections],
         collections => collections[collectionUrlParam].items.find(item => item.id === parseInt(itemUrlParam))
