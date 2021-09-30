@@ -13,7 +13,7 @@ const StripeCheckoutButton = ({ price }) => {
         <StripeCheckout
             label="Pay Now"
             name="Regalia Ltd."
-            image="https://svgshare.com/i/Cuz.svg"
+            image="./favicon.svg"
             currency="GBP"
             locale="en"
             billingAddress

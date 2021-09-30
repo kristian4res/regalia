@@ -8,12 +8,15 @@ import CheckoutItem from '../../components/checkout-item/checkout-item.component
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import './checkout.styles.scss';
+import SubHeader from '../../components/sub-header/sub-header.component';
 
 
 const CheckoutPage = ({ cartItemsProp, cartTotalValueProp }) => {
+    const title = 'Checkout'
     
     return (
         <div className='checkout-page'>
+            <SubHeader title={title.toUpperCase()} />
             <div className='checkout-header'>
                 <div className='header-block'>
                     <span>Product</span>
