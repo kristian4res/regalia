@@ -17,6 +17,7 @@ import './product-page.styles.scss';
 
 const ProductPage = ({ productProp, addItemProp }) => {
     const { name, imageUrl, price } = productProp;
+    const [productSize, setProductSize]= useState();
     const [productColor, setProductColor] = useState('');
     const [productQuantity, setProductQuantity] = useState();
     
@@ -36,7 +37,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
     ];
 
     function handleSize(e) {
-        console.log(e);
+        setProductSize(e.value);
     };
 
     function handleQuantity(e) {
@@ -49,7 +50,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
 
     function handleForm(e) {
         e.preventDefault();
-        addItemProp({...productProp, quantity: productQuantity})
+        addItemProp({...productProp, size: productSize, quantity: productQuantity})
     }
 
     return (

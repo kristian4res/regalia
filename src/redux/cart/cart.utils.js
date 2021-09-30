@@ -4,6 +4,7 @@ export const clearItemFromCart = (cartItems, cartItemToDelete) => {
 
 export const addItemToCart = (cartItems, cartItemToAdd) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToAdd.id);
+    const sizeVal = cartItemToAdd.size ? cartItemToAdd.size : 'N/A'
 
     if (existingCartItem) {
         return cartItems.map(cartItem => 
@@ -12,7 +13,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
             : cartItem 
         )
     }
-    return cartItemToAdd.quantity ? [...cartItems, {...cartItemToAdd}] : [...cartItems, {...cartItemToAdd, quantity: 1}]
+    return cartItemToAdd.quantity ? [...cartItems, {...cartItemToAdd}] : [...cartItems, {...cartItemToAdd, size: sizeVal, quantity: 1}]
 };
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
