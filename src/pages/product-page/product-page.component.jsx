@@ -91,6 +91,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
             </div>
             <ProductInformation>
                 <StickyComponent>
+                    <div className="sticky-inner">
                     <ProductTitle>
                         <h1>{name}</h1>
                         <h2>£{price}.00</h2>
@@ -137,6 +138,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
                         </FormSelect>
                         <CustomButton type="submit">Add to Cart</CustomButton>
                     </ProductForm>
+                    </div>
                 </StickyComponent>
             </ProductInformation>
         </ProductPageContainer>

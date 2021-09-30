@@ -6,7 +6,6 @@ export const ProductPageContainer = styled.div`
     grid-template-columns: 60% 40%;
     grid-template-rows: repeat(1, 1fr);
     min-height: 100vh;
-    position: relative;
 `;
 
 export const ImageContainer = styled.div`

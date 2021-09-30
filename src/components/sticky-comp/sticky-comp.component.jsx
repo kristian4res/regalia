@@ -8,8 +8,8 @@ const StickyComponent = ({ children }) => {
     const elementRef = useRef(null);
     
     const handleScroll = () => {
-        if (elementRef.current) {
-            setSticky(elementRef.current.getBoundingClientRect().top <= 20);
+        if (elementRef && elementRef.current) {
+            setSticky(elementRef.current.getBoundingClientRect().top <= 0);
         }
     };
 
