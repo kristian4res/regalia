@@ -1,43 +1,80 @@
 .checkout-item {
+  position: relative;
   width: 100%;
-  display: flex;
-  min-height: 100px;
+  min-height: 250px;;
   border-bottom: 1px solid darkgrey;
   padding: 15px 0;
   font-size: 20px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  grid-template-rows: 0.8fr 1.2fr;
+  gap: 0px 30px;
+  grid-auto-flow: column dense;
+  grid-template-areas:
+    "image-container ."
+    "image-container .";
 
   .image-container {
-    width: 23%;
-    padding-right: 15px;
+    grid-area: image-container;
+    width: 100%;
 
     img {
       width: 100%;
       height: 100%;
     }
   }
-  .name,
-  .size,
-  .quantity,
-  .price {
-    width: 23%;
-  }
 
-  .quantity {
+  .item-details {
     display: flex;
-    
-    .arrow {
-      cursor: pointer;
-      user-select: none;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .price, .size {
+      font-size: 0.95em;
+      color: rgba($color: #000000, $alpha: 0.75);
     }
 
-    .value {
-      margin: 0px 10px;
+    .size {
+      margin-top: 10px;
+    }
+
+    span {
+      margin: 4px 0 4px;
+      width: 100%;
+    }
+  }
+
+  .item-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    .quantity {
+      display: flex;
+      margin: 10px;
+      
+      .arrow {
+        cursor: pointer;
+        user-select: none;
+      }
+  
+      .value {
+        margin: 0px 10px;
+      }
     }
   }
 
   .remove-button {
-    padding-left: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
     cursor: pointer;
+    margin-top: 15px;
+    transition: all ease 400ms;
+  
+    &:hover {
+      transform: scale(1.5);  
+    }
   }
 }

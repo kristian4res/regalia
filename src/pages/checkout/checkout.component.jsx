@@ -16,34 +16,16 @@ const CheckoutPage = ({ cartItemsProp, cartTotalValueProp }) => {
     
     return (
         <div className='checkout-page'>
-            <SubHeader title={title.toUpperCase()} />
-            <div className='checkout-header'>
-                <div className='header-block'>
-                    <span>Product</span>
+            <div className="checkout-list">
+                <SubHeader title={title.toUpperCase()} />
+                {
+                    cartItemsProp.map(cartItem => (
+                        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+                    ))
+                }
+                <div className="total">
+                    <span>TOTAL: £{cartTotalValueProp}</span>
                 </div>
-                <div className='header-block'>
-                    <span>Description</span>
-                </div>
-                <div className='header-block'>
-                    <span>Size</span>
-                </div>
-                <div className='header-block'>
-                    <span>Quantity</span>
-                </div>
-                <div className='header-block'>
-                    <span>Price</span>
-                </div>
-                <div className='header-block'>
-                    <span>Remove</span>
-                </div>
-            </div>
-            {
-                cartItemsProp.map(cartItem => (
-                    <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-                ))
-            }
-            <div className="total">
-                <span>TOTAL: £{cartTotalValueProp}</span>
             </div>
             <div className="checkout-payment">
                 <div className="test-warning">
