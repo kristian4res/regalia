@@ -6,12 +6,12 @@ import CollectionsPageContainer from '../collection/collection.container';
 import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
 import ProductPageContainer from '../product-page/product-page.container';
 
-import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 
 class ShopPage extends Component {
     componentDidMount() {
-        const { fetchCollectionsStartAsyncProp } = this.props;
-        fetchCollectionsStartAsyncProp();
+        const { fetchCollectionsStartProp } = this.props;
+        fetchCollectionsStartProp();
     }
 
     render() {
@@ -28,7 +28,7 @@ class ShopPage extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchCollectionsStartAsyncProp: () => dispatch(fetchCollectionsStartAsync())
+    fetchCollectionsStartProp: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);

@@ -4,7 +4,7 @@ export const TextOverlay = styled.div`
     position: absolute;
     top: 25%;
     left: 15%;
-    width: 500px;
+    width: 700px;
     font-size: 90px;
     z-index: 9;
     color: white;

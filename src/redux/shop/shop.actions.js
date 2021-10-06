@@ -1,7 +1,6 @@
 import ShopActionTypes from "./shop.types";
 
-import { APP_KEY_PREFIX } from "../../firebase/firebase.utils";
-import { convertCollectionsSnapshotToMap, firestoreDB } from '../../firebase/firebase.utils';
+import { APP_KEY_PREFIX, convertCollectionsSnapshotToMap, firestoreDB } from '../../firebase/firebase.utils';
 import { collection, onSnapshot } from '@firebase/firestore';
 
 export const fetchCollectionsStart = () => ({
