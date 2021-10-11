@@ -50,7 +50,20 @@ const ProductPage = ({ productProp, addItemProp }) => {
 
     function handleForm(e) {
         e.preventDefault();
-        addItemProp({...productProp, size: productSize, quantity: productQuantity})
+        // Validated Product Details
+        if ([productSize, productColor, productQuantity].some(emptyInput)) {
+            // Replace with toast notification
+            alert("Please fill in the product details");
+            return;
+        }
+        addItemProp({...productProp, size: productSize, color: productColor, quantity: productQuantity})
+    }
+
+    function emptyInput(value) {
+        if (value === undefined || value === null) {
+            return true;
+        }
+        return false;
     }
 
     return (

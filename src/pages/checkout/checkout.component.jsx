@@ -18,11 +18,13 @@ const CheckoutPage = ({ cartItemsProp, cartTotalValueProp }) => {
         <div className='checkout-page'>
             <div className="checkout-list">
                 <SubHeader title={title.toUpperCase()} />
-                {
-                    cartItemsProp.map(cartItem => (
-                        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-                    ))
-                }
+                <div className="checkout-items-wrapper">
+                    {
+                        cartItemsProp.map(cartItem => (
+                            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+                        ))
+                    }
+                </div>
                 <div className="total">
                     <span>TOTAL: £{cartTotalValueProp}</span>
                 </div>

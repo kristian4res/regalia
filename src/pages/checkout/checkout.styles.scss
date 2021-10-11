@@ -1,7 +1,7 @@
 .checkout-page {
   position: relative;
   width: 90%;
-  min-height: 90vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
@@ -10,6 +10,17 @@
   box-shadow: 2px 2px 2px 2px grey;
   padding: 3em;
 
+  .checkout-list {
+    max-height: 68vh;
+
+    .checkout-items-wrapper {
+      width: 100%;
+      max-height: 80%;
+      overflow-y: auto;
+    }
+  }
+
+  // CHECK IF NECESSARY
   .checkout-header {
     width: 100%;
     padding: 10px 0;
@@ -31,13 +42,14 @@
     font-size: 36px;
     position: absolute;
     bottom: 5%;
-    left: 5%;
   }
 
   .checkout-payment {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    max-height: 70vh;
 
     .test-warning {
       text-align: center;

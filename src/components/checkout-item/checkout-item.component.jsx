@@ -8,7 +8,7 @@ import './checkout-item.styles.scss';
 
 
 const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp}) => {
-    const { name, imageUrl, price, size, quantity } = cartItem;    
+    const { name, imageUrl, price, size, color, quantity } = cartItem;    
 
     return (
         <article className="checkout-item">
@@ -18,7 +18,8 @@ const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp}) =
             <div className="item-details">
                 <span className="name">{name}</span>
                 <span className="price">£{price}</span>
-                <span className="size">Size: {size}</span>
+                <span className="product-detail-1">Size: {size}</span>
+                <span className="product-detail-1">Color: {color}</span>
             </div>
             <div className="item-actions">
                 <span className="quantity">
