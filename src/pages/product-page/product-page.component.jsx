@@ -56,6 +56,7 @@ const ProductPage = ({ productProp, addItemProp }) => {
             alert("Please fill in the product details");
             return;
         }
+        alert(`${name} added to cart`);
         addItemProp({...productProp, size: productSize, color: productColor, quantity: productQuantity})
     }
 
@@ -154,21 +155,22 @@ const ProductPage = ({ productProp, addItemProp }) => {
                     </ProductForm>
                     </div>
                 </StickyComponent>
-            </ProductInformation>
+            </ProductInformation>            
         </ProductPageContainer>
     )
 };
 
-// Create dummy data
 ProductPage.defaultProps = {
     productProp: {
         id: 1,
         name: 'PRODUCT TITLE',
+        imageUrl: 'IMAGE',
+        price: 0
     }
 }
 
 ProductPage.propTypes = {
-    productProp: PropTypes.object
+    productProp: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

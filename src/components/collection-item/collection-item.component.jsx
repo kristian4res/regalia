@@ -28,7 +28,7 @@ const CollectionItem = ({ collection, item, addItemProp, history, match }) => {
                 <span className='name'>{name}</span>
                 <span className='price'>£{price}</span>
             </div>
-            <CustomButton onClick={() => addItemProp(item)} invertedColors>ADD TO CART</CustomButton>
+            <CustomButton onClick={handleClick} invertedColors>VIEW ITEM</CustomButton>
         </div>
 )}
 

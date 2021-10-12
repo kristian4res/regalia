@@ -5,6 +5,7 @@
   height: 350px;
   align-items: center;
   position: relative;
+  padding: 0.5em;
 
   &:hover {
     .image {
@@ -42,11 +43,13 @@
     font-size: 18px;
 
     .name {
+      font-size: 0.85em;
       width: 90%;
       margin-bottom: 15px;
     }
 
     .price {
+      font-size: 0.75em;
       width: 10%;
     }
   }
