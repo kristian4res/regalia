@@ -7,6 +7,7 @@ import { addItem } from '../../redux/cart/cart.actions';
 
 import { selectProduct } from '../../redux/shop/shop.selectors';
 
+import ToastNotification from '../../components/toast-notification/toast-notif.component';
 import StickyComponent from '../../components/sticky-comp/sticky-comp.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import CustomSelect from '../../components/custom-select/custom-select.component';
@@ -20,6 +21,8 @@ const ProductPage = ({ productProp, addItemProp }) => {
     const [productSize, setProductSize]= useState();
     const [productColor, setProductColor] = useState('');
     const [productQuantity, setProductQuantity] = useState();
+    // Toast notification
+    const [toastList, setToastList] = useState([]);
     
     const sizes = [
         { value: 's', label: 'Small'},
@@ -56,7 +59,12 @@ const ProductPage = ({ productProp, addItemProp }) => {
             alert("Please fill in the product details");
             return;
         }
-        alert(`${name} added to cart`);
+
+        setToastList([...toastList, {
+            title: 'Added Item',
+            description: `${name} has been added to your cart`,
+            backgroundColor: '#5cb85c',
+        }]);
         addItemProp({...productProp, size: productSize, color: productColor, quantity: productQuantity})
     }
 
@@ -155,7 +163,10 @@ const ProductPage = ({ productProp, addItemProp }) => {
                     </ProductForm>
                     </div>
                 </StickyComponent>
-            </ProductInformation>            
+            </ProductInformation>
+            <ToastNotification
+                toastList={toastList}
+            />      
         </ProductPageContainer>
     )
 };
