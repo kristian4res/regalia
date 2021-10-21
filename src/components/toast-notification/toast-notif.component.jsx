@@ -1,41 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { HiPlus } from  'react-icons/hi';
+import { selectToastList } from '../../redux/toast-notif/toast-notif.selectors';
+
+import { getToastNotif } from '../../redux/toast-notif/toast-notif.utils';
 
 import './toast-notif.styles.scss';
 
-const ToastNotification = props => {
-    const { toastList, position, autoDeleteTime } = props;
-    const [list, setList] = useState(toastList);
+const ToastNotification = (props) => {
+    const { toastListProp, position, autoDeleteTime } = props;
+    const [list, setList] = useState(toastListProp);
+    // Keep track of list length
+    const removeToastIdx = useRef(list.length - 1);
 
-    // Delete oldest toast
-    const oldestToast = 0;
-
+    // Update whenever 
     useEffect(() => {
-        setList([...toastList]);
-
+        setList([...toastListProp]);
+        removeToastIdx.current = list.length - 1;
         // eslint-disable-next-line
-    }, [toastList]);
+    }, [toastListProp]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (toastList.length && list.length) {
-                deleteToast(oldestToast);
+        if (removeToastIdx > 5) {
+            removeToast(removeToastIdx);
+        }
+        else { 
+            const interval = setInterval(() => {
+                if (toastListProp.length && list.length) {
+                    removeToast(removeToastIdx);
+                }
+            }, autoDeleteTime); 
+            return () => {
+                clearInterval(interval);
             }
-        }, autoDeleteTime);
-        
-        return () => {
-            clearInterval(interval);
         }
 
         // eslint-disable-next-line
-    }, [toastList, autoDeleteTime, list]);
+    }, [toastListProp, autoDeleteTime, list]);
 
-    const deleteToast = (idx) => {
+    const removeToast = (idx) => {
         // Sync toasts lists
         list.splice(idx, 1);
-        toastList.splice(idx, 1);
+        toastListProp.splice(idx, 1);
 
         setList([...list]);
     }
@@ -43,22 +50,23 @@ const ToastNotification = props => {
     return (
         <>
             <div className={`notification-wrapper ${position}`}>
-                {
+                {   
                     list.map((toast, idx) =>     
                         <div 
                             key={idx}
-                            className={`notification toast ${position}`}
-                            style={{ backgroundColor: toast.backgroundColor }}
+                            className={`notification toast ${position} ${toast.type ? toast.type : ''}`}
                         >
-                            <button onClick={() => deleteToast(idx)}>
+                            <button onClick={() => removeToast(idx)}>
                                 &#10005;
                             </button>
                             <div className="notification-content">
                                 <div className="notification-icon">
-                                    <HiPlus className="icon" />
+                                    {
+                                        getToastNotif(toast.type)
+                                    }
                                 </div>
                                 <div>
-                                    <p className="notification-title">{toast.title}</p>
+                                    <p className="notification-title">{toast.title}[{idx}]</p>
                                     <p className="notification-message">
                                         {toast.description}
                                     </p>
@@ -73,14 +81,17 @@ const ToastNotification = props => {
 }
 
 ToastNotification.defaultProps = {
-    position: 'top-right',
+    position: 'bottom-right',
     autoDeleteTime: 3000,
 }
 
 ToastNotification.propTypes = {
-    toastList: PropTypes.array.isRequired,
     position: PropTypes.string,
     autoDeleteTime: PropTypes.number,
 }
 
-export default ToastNotification;
+const mapStateToProps = (state) => ({
+    toastListProp: selectToastList(state)
+});
+
+export default connect(mapStateToProps)(ToastNotification);

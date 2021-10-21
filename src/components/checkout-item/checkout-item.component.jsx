@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 
 import { clearItemFromCart, addItem, removeItem  } from '../../redux/cart/cart.actions';
 
+import { displayToast } from '../../redux/toast-notif/toast-notif.actions';
+import { toastMessages } from '../../redux/toast-notif/toast-notif.messages';
+
 import './checkout-item.styles.scss';
 
 
-const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp}) => {
+const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp, displayToastProp}) => {
     const { name, imageUrl, price, size, color, quantity } = cartItem;    
 
     return (
@@ -28,7 +31,16 @@ const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp}) =
                     <div className="arrow" onClick={() => addItemProp(cartItem)}>&#10095;</div>
                 </span>
             </div>
-            <div className="remove-button" onClick={() => clearItemProp(cartItem)}>&#10005;</div>
+            <div className="remove-button" onClick={() => {
+                displayToastProp({
+                    ...toastMessages['success'],
+                    title: 'Removed Item',
+                    description: `${name} has been removed from your cart`,
+                });
+                clearItemProp(cartItem);
+            }}>
+                &#10005;
+            </div>
         </article>
     )
 };
@@ -36,7 +48,8 @@ const CheckoutItem = ({ cartItem, clearItemProp, addItemProp, removeItemProp}) =
 const mapDispatchToProps = dispatch => ({
     clearItemProp: item => dispatch(clearItemFromCart(item)),
     addItemProp: item =>  dispatch(addItem(item)),
-    removeItemProp: item => dispatch(removeItem(item))
+    removeItemProp: item => dispatch(removeItem(item)),
+    displayToastProp: content => dispatch(displayToast(content)) 
 });
 
 export default connect(null, mapDispatchToProps)(CheckoutItem);

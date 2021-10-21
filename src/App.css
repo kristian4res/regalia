@@ -33,6 +33,7 @@ a {
 .content {
     padding: 0px 2.5rem 2.5em;
     overflow: hidden;
+    position: relative;
 }
 
 .content-wrap.inverse {

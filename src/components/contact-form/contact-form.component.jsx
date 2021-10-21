@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import CustomFormContainer from '../custom-form-container/custom-form-container.component';
 import CustomForm from '../custom-form/custom-form.component';
 import FormInput from '../form-input/form-input.component';
 import FormTextarea from '../form-textarea/form-textarea.component';
 import CustomButton from '../custom-button/custom-button.component';
-
-import { FORM_SUBJECTS, FORM_SUBJECTS_ORDER } from './contact-form.data';
-
-import './contact-form.styles.scss';
 import CustomSelect from '../custom-select/custom-select.component';
 
+import { toastMessages } from '../../redux/toast-notif/toast-notif.messages';
+
+import { FORM_SUBJECTS, FORM_SUBJECTS_ORDER } from './contact-form.data';
+import { displayToast } from '../../redux/toast-notif/toast-notif.actions';
+
+import './contact-form.styles.scss';
 
 class ContactForm extends Component {
     constructor() {
@@ -28,11 +31,14 @@ class ContactForm extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
+        // Default toast styling
+        let toastType = 'success';
 
-        // const { subject, orderNumber, firstName, lastName, email, message } = this.state;
+        this.props.displayToastProp({
+            ...toastMessages[toastType],
+            description: `Successfully submitted [This is only a test message]`,
+        });    
 
-        // https://firebase.google.com/docs/firestore/manage-data/add-data
-        alert('Success');
         this.setState({
             subject: '',
             orderNumber: '',
@@ -132,4 +138,8 @@ class ContactForm extends Component {
     }
 };
 
-export default ContactForm;
+const mapDispatchToProps = (dispatch) => ({
+    displayToastProp: content => dispatch(displayToast(content))
+});
+
+export default connect(null, mapDispatchToProps)(ContactForm);

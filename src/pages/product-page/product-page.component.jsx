@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { addItem } from '../../redux/cart/cart.actions';
+import { displayToast } from '../../redux/toast-notif/toast-notif.actions';
+import { toastMessages } from '../../redux/toast-notif/toast-notif.messages';
 
 import { selectProduct } from '../../redux/shop/shop.selectors';
 
-import ToastNotification from '../../components/toast-notification/toast-notif.component';
 import StickyComponent from '../../components/sticky-comp/sticky-comp.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import CustomSelect from '../../components/custom-select/custom-select.component';
@@ -16,13 +17,11 @@ import { ProductPageContainer, ImageContainer, Image, ProductInformation, Produc
 import './product-page.styles.scss';
 
 
-const ProductPage = ({ productProp, addItemProp }) => {
+const ProductPage = ({ productProp, addItemProp, displayToastProp }) => {
     const { name, imageUrl, price } = productProp;
     const [productSize, setProductSize]= useState();
     const [productColor, setProductColor] = useState('');
     const [productQuantity, setProductQuantity] = useState();
-    // Toast notification
-    const [toastList, setToastList] = useState([]);
     
     const sizes = [
         { value: 's', label: 'Small'},
@@ -53,18 +52,24 @@ const ProductPage = ({ productProp, addItemProp }) => {
 
     function handleForm(e) {
         e.preventDefault();
+        // Default toast styling
+        let toastType = 'success';
+
         // Validated Product Details
         if ([productSize, productColor, productQuantity].some(emptyInput)) {
             // Replace with toast notification
-            alert("Please fill in the product details");
-            return;
+            toastType = 'error';
+            displayToastProp({
+                ...toastMessages[toastType],
+                description: "Please fill in all product details"
+            })
+            return null;
         }
 
-        setToastList([...toastList, {
-            title: 'Added Item',
+        displayToastProp({
+            ...toastMessages[toastType],
             description: `${name} has been added to your cart`,
-            backgroundColor: '#5cb85c',
-        }]);
+        });
         addItemProp({...productProp, size: productSize, color: productColor, quantity: productQuantity})
     }
 
@@ -164,9 +169,6 @@ const ProductPage = ({ productProp, addItemProp }) => {
                     </div>
                 </StickyComponent>
             </ProductInformation>
-            <ToastNotification
-                toastList={toastList}
-            />      
         </ProductPageContainer>
     )
 };
@@ -189,7 +191,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addItemProp: item => dispatch(addItem(item))
+    addItemProp: item => dispatch(addItem(item)),
+    displayToastProp: content => dispatch(displayToast(content))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

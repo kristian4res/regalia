@@ -7,6 +7,7 @@ import cartReducer from './cart/cart.reducer';
 import directoryReducer from "./directory/directory.reducer";
 import shopReducer from "./shop/shop.reducer";
 import imageCarouselReducer from "./image-carousel/image-carousel.reducer";
+import toastReducer from "./toast-notif/toast-notif.reducer";
 
 const persistConfig = {
     key: 'root',
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     directory: directoryReducer,
     shop: shopReducer,
-    imageCarousel: imageCarouselReducer
+    imageCarousel: imageCarouselReducer,
+    toastNotif: toastReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

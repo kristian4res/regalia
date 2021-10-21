@@ -7,6 +7,7 @@ import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import ContactPage from './pages/contact/contact.component';
+import ToastNotification from './components/toast-notification/toast-notif.component';
 import Footer from './components/footer/footer.component';
 
 import { connect } from 'react-redux';
@@ -58,6 +59,7 @@ class App extends Component {
         <div className={`content-wrap ${INVERSE_STYLE_PAGES.includes(pathname) ? 'inverse' : ''}`}>
           <Header />
           <div className="content">
+            <ToastNotification />      
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/shop' component={ShopPage} />
@@ -68,7 +70,7 @@ class App extends Component {
                 : 
                 (<SignInAndSignUpPage /> )
                 } 
-              />
+              />    
             </Switch>
           </div>
         </div>
