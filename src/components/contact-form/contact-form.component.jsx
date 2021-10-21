@@ -82,7 +82,7 @@ class ContactForm extends Component {
         const { subject, orderNumber, firstName, lastName, email, message } = this.state;
 
         return (
-            <CustomFormContainer>
+            <CustomFormContainer className="solo-form-wrapper">
                 <h2 className="title">{title.toUpperCase()}</h2>
                 <span className="title-description">Representatives are available between 8:30 - 17:00 GMT (Monday - Friday) by using the form below.</span>
                 

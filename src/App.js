@@ -10,6 +10,9 @@ import ContactPage from './pages/contact/contact.component';
 import ToastNotification from './components/toast-notification/toast-notif.component';
 import Footer from './components/footer/footer.component';
 
+import { displayToast } from './redux/toast-notif/toast-notif.actions';
+import { toastMessages } from './redux/toast-notif/toast-notif.messages';
+
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { createStructuredSelector } from 'reselect';
@@ -26,6 +29,8 @@ class App extends Component {
 
   componentDidMount() {
     const { setCurrentUserProp } = this.props;
+    // Default toast styling
+    let toastType = 'success';
 
     // Google User Authentication + Creation (stored in Firestore)
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -38,10 +43,16 @@ class App extends Component {
               ...snapshot.data()
           });
         })
+    
+        this.props.displayToastProp({
+          ...toastMessages[toastType],
+          title: `Welcome back`,
+          description: `Successfully signed in`,
+        })
+        
       }
       else {
         setCurrentUserProp(userAuth);
-        console.log('No user has signed in')
       }
     })
   }
@@ -85,7 +96,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUserProp: user => dispatch(setCurrentUser(user))
+  setCurrentUserProp: user => dispatch(setCurrentUser(user)),
+  displayToastProp: content => dispatch(displayToast(content))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

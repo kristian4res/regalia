@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import CustomFormContainer from '../custom-form-container/custom-form-container.component';
 import CustomForm from '../custom-form/custom-form.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+
+import { displayToast } from '../../redux/toast-notif/toast-notif.actions';
+import { toastMessages } from '../../redux/toast-notif/toast-notif.messages';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -26,15 +30,28 @@ class SignUp extends Component {
         e.preventDefault();
 
         const { displayName, email, password, confirmPassword } = this.state;
+        // Default toast styling
+        let toastType = 'success'
 
         if (password !== confirmPassword) {
-            alert('Passwords do not match, please try again.');
-            return;
+            toastType = 'error';
+
+            this.props.displayToastProp({
+                ...toastMessages[toastType],
+                description: `Passwords do not match, please try again`,
+            });   
+            return null;
         }
 
         try {
             const { user } = await createUserWithEmailAndPassword(auth, email, password);
             await createUserProfileDocument(user, { displayName });
+
+            this.props.displayToastProp({
+                ...toastMessages[toastType],
+                title: `Welcome, ${displayName}`,
+                description: 'You have succesfully registered an account',
+            });   
 
             this.setState({
                 displayName: '',
@@ -43,7 +60,14 @@ class SignUp extends Component {
                 confirmPassword: ''
             })
         } catch (error) {
-            console.log(error);
+            toastType = 'error';
+
+            this.props.displayToastProp({
+                ...toastMessages[toastType],
+                title: `Oops, something unexpected happened`,
+                description: `An error occured whilst signing up, please try again`,
+            });   
+            return null;
         }
     }
 
@@ -104,4 +128,8 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+    displayToastProp: content => dispatch(displayToast(content))
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

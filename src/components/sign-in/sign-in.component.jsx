@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import CustomFormContainer from '../custom-form-container/custom-form-container.component';
 import CustomForm from '../custom-form/custom-form.component';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+
+import { displayToast } from '../../redux/toast-notif/toast-notif.actions';
+import { toastMessages } from '../../redux/toast-notif/toast-notif.messages';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -23,16 +27,22 @@ class SignIn extends Component {
     // Sign In with Email & Password
     handleSubmit = async (e) => {
         e.preventDefault();
+        // Default toast styling
+        let toastType = 'success'
 
         const { email, password } =  this.state;
 
         try {
-            await signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => console.log(`User ${userCredential} has signed in!`));
-            
+            await signInWithEmailAndPassword(auth, email, password);
+
             this.setState({ email: '', password: ''});
         } catch (error) {
-            console.log('Error occured while signing in with email and password: ', error);
+            toastType = 'error';
+
+            this.props.displayToastProp({
+                ...toastMessages[toastType],
+                description: `Error occured while signing in with email and password, please try again`,
+            });   
         }
     }
 
@@ -78,4 +88,8 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+    displayToastProp: content => dispatch(displayToast(content))
+})
+
+export default connect(null, mapDispatchToProps)(SignIn);

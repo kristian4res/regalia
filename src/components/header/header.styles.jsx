@@ -23,6 +23,7 @@ export const HeaderContainer = styled.div`
     padding: 2.5rem 10rem 2.5rem;
     background-color: white;
     border-bottom: 1px solid gray;
+    box-shadow: 1px 13px 15px -12px rgba(0,0,0,0.4);
 `;
 
 export const LogoContainer = styled(Link)`

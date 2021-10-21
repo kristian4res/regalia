@@ -4,8 +4,25 @@
     margin: 30px auto;
 
     .forms {
-        min-width: 1150px;
+        max-width: 1150px;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        gap: 2em;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sign-in-and-sign-up {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    
+        .forms {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2em;
+        }
     }
 }

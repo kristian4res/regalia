@@ -7,3 +7,10 @@
     box-shadow: 2px 2px 2px 2px grey;
     padding: 2em;
 }
+
+@media screen and (max-width: 1024px) {
+    .form-container {
+        height: 940px;
+        width: 700px;
+    }
+}
