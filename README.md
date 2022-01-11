@@ -4,7 +4,7 @@ Regalia is a (mock) clothing e-commerce store. <br/>
 
 ### Built With
   - [React](https://reactjs.org/)
-  - [Sass/Sass](https://sass-lang.com/)
+  - [Scss/Sass](https://sass-lang.com/)
   - [Redux](https://redux.js.org/)
   - [Firebase](https://firebase.google.com/)
   - [Stripe](https://stripe.com/gb)
