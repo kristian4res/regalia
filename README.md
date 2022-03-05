@@ -1,6 +1,6 @@
 # Regalia
 Regalia is a (mock) clothing e-commerce store. <br/> 
-**This project is still a work in progress.**
+**This project should be functional but is still a work in progress.**
 
 ### Built With
   - [React](https://reactjs.org/)
