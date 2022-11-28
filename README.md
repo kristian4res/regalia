@@ -14,7 +14,7 @@ Regalia is a (mock) clothing e-commerce store. <br/>
 
 ## Usage
 ~To visit the latest live version of the app, go to this [link]().~ <br/> 
-This app is hosted wholly by Heroku and due to recent changes from Heroku, this app will be offline for the time being.
+This app was hosted wholly by Heroku but due to recent changes from Heroku, this app will be offline for the time being.
 
 ## Acknowledgements
   - [Yihua Zhang](https://github.com/ZhangMYihua)
