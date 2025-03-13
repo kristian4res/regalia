@@ -3,16 +3,16 @@ import { getFirestore, doc, setDoc, getDoc, writeBatch, collection } from 'fireb
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBjqT-ARGMDHHPkCc95wcOaQpiUAdt6GGQ",
-    authDomain: "crwn-clothing-dtb.firebaseapp.com",
-    projectId: "crwn-clothing-dtb",
-    storageBucket: "crwn-clothing-dtb.appspot.com",
-    messagingSenderId: "760930125490",
-    appId: "1:760930125490:web:6d2444aa7471c91168ebab",
-    measurementId: "G-YNKXYV1LE5"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-export const APP_KEY_PREFIX = 'regalia-';
+export const APP_KEY_PREFIX = process.env.REACT_APP_FIREBASE_APP_KEY_PREFIX;
 
 // Firestore function
 export const createUserProfileDocument = async (userAuth, additionalData) => {
