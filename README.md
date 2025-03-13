@@ -13,7 +13,7 @@ Regalia is a (mock) clothing e-commerce store. <br/>
 
 ## Usage
 
-To visit the latest live version of the app, go to this [link]().
+To visit the latest live version of the app, go to this [link](https://regalia-k4res.netlify.app/).
 
 ## Acknowledgements
 
